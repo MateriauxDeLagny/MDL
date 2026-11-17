@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_LINKS, SITE, DEVIS_URL } from "@/lib/constants";
-import { ClockIcon, CloseIcon, FacebookIcon, MenuIcon, PhoneIcon, PinIcon } from "@/components/Icons";
+import { CloseIcon, MenuIcon, PhoneIcon } from "@/components/Icons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -17,39 +17,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Barre d'infos pratiques */}
-      <div className="bg-dark text-gray-300 text-xs">
-        <div className="container mx-auto flex items-center justify-between gap-4 h-9">
-          <div className="flex items-center gap-5 min-w-0">
-            <span className="hidden md:flex items-center gap-1.5">
-              <ClockIcon className="w-3.5 h-3.5 text-orange-300" />
-              {SITE.hoursShort}
-            </span>
-            <a
-              href={SITE.mapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white transition-colors truncate"
-            >
-              <PinIcon className="w-3.5 h-3.5 text-orange-300 flex-shrink-0" />
-              <span className="truncate">{SITE.address}</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4 flex-shrink-0">
-            <span className="hidden lg:inline text-gray-400">{SITE.audience}</span>
-            <a
-              href={SITE.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="hover:text-white transition-colors"
-            >
-              <FacebookIcon className="w-3.5 h-3.5" />
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* En-tête principal */}
       <header className="sticky top-0 z-50 bg-white border-b border-warm-border shadow-sm">
         <div className="container mx-auto flex items-center justify-between gap-6 h-[72px] lg:h-20">
