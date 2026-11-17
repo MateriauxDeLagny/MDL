@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import { Oswald, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SITE } from "@/lib/constants";
 
-const oswald = Oswald({
-  subsets: ["latin"],
+// Polices auto-hébergées (variables, sous-ensemble latin, licence OFL) : le build
+// ne dépend plus de Google Fonts, dont les réponses ont fait échouer un build Vercel.
+const oswald = localFont({
+  src: "./fonts/Oswald-Variable-latin.woff2",
   variable: "--font-oswald",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "200 700",
   display: "swap",
+  fallback: ["Arial Narrow", "sans-serif"],
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/Inter-Variable-latin.woff2",
   variable: "--font-inter",
+  weight: "100 900",
   display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export const metadata: Metadata = {
