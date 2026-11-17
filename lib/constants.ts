@@ -21,6 +21,18 @@ export const SITE = {
   audience: "Professionnels et particuliers",
 };
 
+/** Lien unique vers le formulaire de devis (ancre sur le formulaire lui-même). */
+export const DEVIS_URL = "/devis#formulaire";
+
+/** Lien vers le formulaire prérempli (famille et/ou produit du catalogue). */
+export function devisUrl(params: { famille?: string; produit?: string } = {}) {
+  const q = new URLSearchParams();
+  if (params.famille) q.set("famille", params.famille);
+  if (params.produit) q.set("produit", params.produit);
+  const qs = q.toString();
+  return `/devis${qs ? `?${qs}` : ""}#formulaire`;
+}
+
 export const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Produits", href: "/produits" },

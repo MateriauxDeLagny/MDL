@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import Image from "next/image";
-import { SITE } from "@/lib/constants";
+import { DEVIS_URL, SITE } from "@/lib/constants";
 
 const SLIDES = [
   {
@@ -14,7 +14,7 @@ const SLIDES = [
     eyebrow: "Depuis 1985",
     headline: "Matériaux de construction",
     sub: "Gros œuvre, isolation, bois, enduits — tout pour votre chantier, disponible au dépôt de Lagny-sur-Marne.",
-    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    cta: { label: "Demande de devis gratuit", href: DEVIS_URL },
     ctaSecondary: { label: "Voir nos produits", href: "/produits" },
   },
   {
@@ -23,7 +23,7 @@ const SLIDES = [
     eyebrow: "Livraison partout en Île-de-France",
     headline: "Conseil et proximité",
     sub: "Notre équipe vous accompagne du projet à la livraison. Vente au comptoir, commandes spéciales, livraison sur chantier en Île-de-France.",
-    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    cta: { label: "Demande de devis gratuit", href: DEVIS_URL },
     ctaSecondary: { label: "Nos services", href: "/services" },
   },
   {
@@ -32,7 +32,7 @@ const SLIDES = [
     eyebrow: "Fournisseurs reconnus",
     headline: "Marques professionnelles",
     sub: "URSA, PRB, SEMIN, WÜRTH, illbruck, ACTIS, Wienerberger et bien d'autres. Des produits éprouvés, disponibles à Lagny.",
-    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    cta: { label: "Demande de devis gratuit", href: DEVIS_URL },
     ctaSecondary: { label: "Nos fournisseurs", href: "/fournisseurs" },
   },
 ];

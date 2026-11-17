@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS, SITE, DEVIS_URL } from "@/lib/constants";
 import { ClockIcon, CloseIcon, FacebookIcon, MenuIcon, PhoneIcon, PinIcon } from "@/components/Icons";
 
 export default function Header() {
@@ -87,7 +87,7 @@ export default function Header() {
               {SITE.phone}
             </a>
             <Link
-              href="/devis"
+              href={DEVIS_URL}
               className="px-5 py-3 bg-orange text-white font-heading text-sm uppercase tracking-wider hover:bg-orange-600 transition-colors rounded"
             >
               Devis gratuit
@@ -126,7 +126,7 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/devis"
+                href={DEVIS_URL}
                 className="mt-4 mb-2 text-center px-5 py-3 bg-orange text-white font-heading text-sm uppercase tracking-wider rounded"
               >
                 Demande de devis gratuit

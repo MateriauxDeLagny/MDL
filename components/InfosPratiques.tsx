@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE } from "@/lib/constants";
+import { SITE, DEVIS_URL } from "@/lib/constants";
 import { ArrowIcon, ClockIcon, MailIcon, PhoneIcon, PinIcon, UsersIcon } from "@/components/Icons";
 
 export default function InfosPratiques({ id = "infos-pratiques" }: { id?: string }) {
@@ -68,7 +68,7 @@ export default function InfosPratiques({ id = "infos-pratiques" }: { id?: string
               <li>Particuliers et auto-constructeurs</li>
             </ul>
             <Link
-              href="/devis"
+              href={DEVIS_URL}
               className="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-medium text-orange hover:underline"
             >
               Demander un devis <ArrowIcon className="w-4 h-4" />

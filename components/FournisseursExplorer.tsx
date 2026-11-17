@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FOURNISSEURS, getFournisseur } from "@/lib/fournisseurs";
+import { DEVIS_URL } from "@/lib/constants";
 import { getFamilyBySlug } from "@/lib/produits";
 import LogoMarquee from "@/components/LogoMarquee";
 import SupplierLogo from "@/components/SupplierLogo";
@@ -164,7 +165,7 @@ export default function FournisseursExplorer() {
               )}
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href={`/devis`} className="btn-primary">
+                <Link href={DEVIS_URL} className="btn-primary">
                   Demander un devis
                 </Link>
                 {f.site && (

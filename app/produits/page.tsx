@@ -4,7 +4,7 @@ import Link from "next/link";
 import CatalogExplorer from "@/components/CatalogExplorer";
 import { CATALOG, PRODUCT_FAMILIES } from "@/lib/produits";
 import { FOURNISSEURS } from "@/lib/fournisseurs";
-import { SITE } from "@/lib/constants";
+import { SITE, DEVIS_URL } from "@/lib/constants";
 import { PhoneIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -59,7 +59,7 @@ export default function ProduitsPage() {
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-3 flex-shrink-0">
-              <Link href="/devis" className="btn-primary">Demander un devis</Link>
+              <Link href={DEVIS_URL} className="btn-primary">Demander un devis</Link>
               <a
                 href={SITE.phoneHref}
                 className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-white/60 text-white font-heading text-sm uppercase tracking-wider rounded hover:bg-white/10 transition-colors"

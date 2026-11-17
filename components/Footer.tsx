@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { NAV_LINKS, SITE } from "@/lib/constants";
+import { NAV_LINKS, SITE, DEVIS_URL } from "@/lib/constants";
 import { PRODUCT_FAMILIES } from "@/lib/produits";
 import { SERVICES } from "@/lib/services";
 import { ArrowIcon, FacebookIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/Icons";
@@ -54,7 +54,7 @@ export default function Footer() {
                 <Link href={l.href} className={linkCls}>{l.label}</Link>
               </li>
             ))}
-            <li><Link href="/devis" className={linkCls}>Demande de devis</Link></li>
+            <li><Link href={DEVIS_URL} className={linkCls}>Demande de devis</Link></li>
           </ul>
         </div>
 

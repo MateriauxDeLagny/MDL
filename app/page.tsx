@@ -7,7 +7,7 @@ import ServiceIcon from "@/components/ServiceIcon";
 import { ArrowIcon, CheckIcon, PhoneIcon } from "@/components/Icons";
 import { PRODUCT_FAMILIES } from "@/lib/produits";
 import { SERVICES } from "@/lib/services";
-import { SITE } from "@/lib/constants";
+import { SITE, DEVIS_URL } from "@/lib/constants";
 import { FOURNISSEURS } from "@/lib/fournisseurs";
 import LogoMarquee from "@/components/LogoMarquee";
 
@@ -103,7 +103,7 @@ export default function HomePage() {
               )}
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/devis" className="btn-primary">
+              <Link href={DEVIS_URL} className="btn-primary">
                 Demande de devis gratuit
               </Link>
               <a href={SITE.phoneHref} className="btn-outline">
@@ -240,7 +240,7 @@ export default function HomePage() {
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/devis"
+              href={DEVIS_URL}
               className="inline-flex items-center gap-2 px-7 py-4 bg-white text-orange font-heading text-sm uppercase tracking-wider font-semibold rounded hover:bg-warm-white transition-colors"
             >
               Demande de devis gratuit

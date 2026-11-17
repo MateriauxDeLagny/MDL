@@ -12,26 +12,26 @@ export const metadata: Metadata = {
 export default function DevisPage() {
   return (
     <>
-      <section className="bg-dark text-white py-12">
+      <section className="bg-dark text-white py-6 lg:py-8">
         <div className="container mx-auto">
-          <nav className="text-xs text-gray-500 mb-4 font-heading uppercase tracking-wider flex items-center gap-2">
+          <nav className="text-xs text-gray-500 mb-2 font-heading uppercase tracking-wider flex items-center gap-2">
             <Link href="/" className="hover:text-orange transition-colors">Accueil</Link>
             <span>/</span>
             <span className="text-gray-400">Devis</span>
           </nav>
-          <h1 className="heading-xl text-white">Demande de devis</h1>
-          <p className="text-gray-300 mt-3 max-w-xl text-sm leading-relaxed">
+          <h1 className="font-heading text-3xl lg:text-4xl font-semibold uppercase tracking-wide text-white">Demande de devis</h1>
+          <p className="text-gray-300 mt-2 max-w-2xl text-sm leading-relaxed">
             Remplissez le formulaire ci-dessous et notre équipe vous contactera rapidement avec une estimation adaptée à votre projet.
           </p>
         </div>
       </section>
 
-      <section className="section-padding bg-warm-white">
+      <section className="py-6 lg:py-10 bg-warm-white">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Formulaire */}
             <div className="lg:col-span-2">
-              <div className="bg-white border border-warm-border rounded p-6 lg:p-8">
+              <div id="formulaire" className="scroll-mt-28 bg-white border border-warm-border rounded p-6 lg:p-8">
                 <h2 className="font-heading text-dark text-xl uppercase font-semibold mb-6">Votre demande</h2>
                 <DevisForm />
               </div>

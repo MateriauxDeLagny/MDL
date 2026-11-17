@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FournisseursExplorer from "@/components/FournisseursExplorer";
 import { FOURNISSEURS } from "@/lib/fournisseurs";
+import { DEVIS_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Nos fournisseurs",
@@ -41,7 +42,7 @@ export default function FournisseursPage() {
               étudions toute demande de commande spéciale.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/devis" className="btn-primary">Demander un devis</Link>
+              <Link href={DEVIS_URL} className="btn-primary">Demander un devis</Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-white/60 text-white font-heading text-sm uppercase tracking-wider rounded hover:bg-white/10 transition-colors"

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CATALOG, PRODUCT_FAMILIES, getCatalogItem, type CatalogItem } from "@/lib/produits";
 import { getFournisseur } from "@/lib/fournisseurs";
+import { devisUrl } from "@/lib/constants";
 import SupplierLogo from "@/components/SupplierLogo";
 import { ArrowIcon, CloseIcon, SearchIcon } from "@/components/Icons";
 
@@ -173,7 +174,7 @@ export default function CatalogExplorer({ family }: Props) {
                   </button>
                 ))}
               </div>
-              <Link href={`/devis?produit=${encodeURIComponent(query)}`} className="btn-primary mt-6">
+              <Link href={devisUrl({ produit: query })} className="btn-primary mt-6">
                 Demander ce produit
               </Link>
             </div>
@@ -308,7 +309,7 @@ export default function CatalogExplorer({ family }: Props) {
 
                 <div className="mt-5 flex flex-wrap gap-3 md:mt-auto md:pt-6">
                   <Link
-                    href={`/devis?famille=${item.family.slug}&produit=${encodeURIComponent(item.name)}`}
+                    href={devisUrl({ famille: item.family.slug, produit: item.name })}
                     className="btn-primary"
                   >
                     Demander un prix
