@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { SITE } from "@/lib/constants";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", website: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -43,7 +44,12 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="relative space-y-4">
+      {/* Piège anti-spam : invisible pour les visiteurs, ignoré par les lecteurs d'écran */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label>Site web<input type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={handleChange} /></label>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block font-heading text-xs uppercase tracking-wider text-dark mb-1">
@@ -104,7 +110,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p className="text-red-600 text-sm">
-          Une erreur est survenue. Veuillez réessayer ou nous appeler directement.
+          Une erreur est survenue. Veuillez réessayer ou nous appeler au {SITE.phone}.
         </p>
       )}
 

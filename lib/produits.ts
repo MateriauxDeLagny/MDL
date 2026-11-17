@@ -97,7 +97,7 @@ export const PRODUCT_FAMILIES: ProductFamily[] = [
       "Colles à carrelage, ragréages, produits d'imperméabilisation et gamme Sika pour tous les chantiers.",
     emoji: "🧪",
     color: "#0F6B3C",
-    image: "/images/produit-prb-mortier.jpg",
+    image: "/images/produit-illbruck.jpg",
     subcategories: [
       { name: "Colle à carrelage", description: "Flexibel C2, déformable S1 et S2 pour tous supports.", emoji: "🔷" },
       { name: "Ragréage", description: "Ragréage autonivelant, fibré, pour sols intérieurs.", emoji: "🪣" },

@@ -116,8 +116,8 @@ export default function HomePage() {
           <div className="relative">
             <div className="relative aspect-[4/3] rounded overflow-hidden shadow-xl">
               <Image
-                src="/images/depot-vue.jpg"
-                alt="Le dépôt Matériaux de Lagny"
+                src="/images/livraison-sunset.jpg"
+                alt="Le dépôt Matériaux de Lagny : parpaings, big bags et armatures en stock"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

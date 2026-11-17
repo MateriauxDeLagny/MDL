@@ -51,7 +51,7 @@ export default function MentionsLegalesPage() {
 
             <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Cookies</h2>
             <p className="text-gray-600 text-sm mb-6">
-              Ce site n'utilise pas de cookies de traçage ou de publicité. Des cookies techniques peuvent être déposés pour assurer le bon fonctionnement du site.
+              Ce site n'utilise pas de cookies de traçage ou de publicité. Des cookies techniques peuvent être déposés pour assurer le bon fonctionnement du site. La carte de la page Contact, fournie par Google Maps, n'est chargée que si vous cliquez sur « Afficher la carte » ; Google peut alors déposer ses propres cookies.
             </p>
 
             <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Responsabilité</h2>

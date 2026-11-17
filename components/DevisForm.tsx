@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SITE } from "@/lib/constants";
 
 const PRODUCT_OPTIONS = [
   "Gros Œuvre (blocs, briques, ciment…)",
@@ -24,6 +25,7 @@ export default function DevisForm() {
     address: "",
     deadline: "",
     details: "",
+    website: "",
   });
 
   const handleChange = (
@@ -69,7 +71,12 @@ export default function DevisForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="relative space-y-5">
+      {/* Piège anti-spam : invisible pour les visiteurs, ignoré par les lecteurs d'écran */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label>Site web<input type="text" name="website" tabIndex={-1} autoComplete="off" value={form.website} onChange={handleChange} /></label>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label className={labelClass}>Nom *</label>
@@ -140,7 +147,7 @@ export default function DevisForm() {
 
       {status === "error" && (
         <p className="text-red-600 text-sm">
-          Une erreur est survenue. Veuillez réessayer ou nous appeler au 01.85.42.12.34.
+          Une erreur est survenue. Veuillez réessayer ou nous appeler au {SITE.phone}.
         </p>
       )}
 

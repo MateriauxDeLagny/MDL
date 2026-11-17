@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import MapEmbed from "@/components/MapEmbed";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -125,17 +126,7 @@ export default function ContactPage() {
 
       {/* Google Maps */}
       <section className="h-72 lg:h-96 bg-warm-100">
-        <iframe
-          title="Localisation Matériaux de Lagny"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.5!2d2.7008!3d48.8709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e82b4c00000001%3A0x0!2s17+Rue+Freycinet%2C+77400+Lagny-sur-Marne!5e0!3m2!1sfr!2sfr!4v1700000000000"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="grayscale hover:grayscale-0 transition-all duration-500"
-        />
+        <MapEmbed />
       </section>
     </>
   );

@@ -7,8 +7,10 @@ export const SITE = {
   email: "contact@materiauxdelagny.com",
   facebook: "https://facebook.com/materiauxdelagny",
   url: "https://www.materiauxdelagny.com",
+  // Carte intégrée sans clé API, centrée sur l'adresse du dépôt.
   mapsEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9!2d2.700!3d48.872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e81b99a6f9f777%3A0x1234!2s17%20Rue%20Freycinet%2C%2077400%20Lagny-sur-Marne!5e0!3m2!1sfr!2sfr",
+    "https://maps.google.com/maps?output=embed&z=16&q=" +
+    encodeURIComponent("17 rue Freycinet, 77400 Lagny-sur-Marne"),
   hours: [
     { days: "Lundi – Vendredi", time: "7h30 – 17h30" },
     { days: "Samedi", time: "8h00 – 12h00" },
