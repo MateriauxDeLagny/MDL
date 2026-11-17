@@ -3,14 +3,15 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PRODUCT_FAMILIES, getFamilyBySlug } from "@/lib/produits";
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
   return PRODUCT_FAMILIES.map((f) => ({ slug: f.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const family = getFamilyBySlug(params.slug);
+  const { slug } = await params;
+  const family = getFamilyBySlug(slug);
   if (!family) return {};
   return {
     title: family.name,
@@ -18,11 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function FamilyPage({ params }: Props) {
-  const family = getFamilyBySlug(params.slug);
+export default async function FamilyPage({ params }: Props) {
+  const { slug } = await params;
+  const family = getFamilyBySlug(slug);
   if (!family) notFound();
 
-  const currentIndex = PRODUCT_FAMILIES.findIndex((f) => f.slug === params.slug);
+  const currentIndex = PRODUCT_FAMILIES.findIndex((f) => f.slug === slug);
   const prev = currentIndex > 0 ? PRODUCT_FAMILIES[currentIndex - 1] : null;
   const next = currentIndex < PRODUCT_FAMILIES.length - 1 ? PRODUCT_FAMILIES[currentIndex + 1] : null;
 
