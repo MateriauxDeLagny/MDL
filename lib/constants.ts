@@ -15,12 +15,16 @@ export const SITE = {
     { days: "Dimanche", time: "Fermé" },
   ],
   hoursShort: "Lun–Ven 7h30–17h30 · Sam 8h–12h",
+  mapsLink:
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent("Matériaux de Lagny, 17 rue Freycinet, 77400 Lagny-sur-Marne"),
+  audience: "Professionnels et particuliers",
 };
 
 export const NAV_LINKS = [
   { label: "Accueil", href: "/" },
   { label: "Produits", href: "/produits" },
-  { label: "Devis", href: "/devis" },
+  { label: "Services", href: "/services" },
   { label: "Fournisseurs", href: "/fournisseurs" },
   { label: "Contact", href: "/contact" },
 ];

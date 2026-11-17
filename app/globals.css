@@ -43,3 +43,31 @@
     @apply font-heading text-2xl font-medium uppercase;
   }
 }
+
+@layer components {
+  .eyebrow {
+    @apply font-heading text-orange text-xs uppercase tracking-[0.2em] mb-2;
+  }
+
+  .info-card {
+    @apply flex flex-col bg-white border border-warm-border rounded p-6;
+  }
+
+  .info-title {
+    @apply font-heading text-dark text-base uppercase font-semibold tracking-wider mb-3;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-orange text-white font-heading text-sm uppercase tracking-wider hover:bg-orange-600 transition-colors rounded;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-dark text-dark font-heading text-sm uppercase tracking-wider hover:bg-dark hover:text-white transition-colors rounded;
+  }
+}
+
+@layer components {
+  .footer-title {
+    @apply font-heading text-white text-sm uppercase tracking-[0.15em] mb-4;
+  }
+}

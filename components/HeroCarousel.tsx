@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import Image from "next/image";
+import { SITE } from "@/lib/constants";
 
 const SLIDES = [
   {
@@ -13,8 +14,8 @@ const SLIDES = [
     eyebrow: "Depuis 1985",
     headline: "Matériaux de construction",
     sub: "Gros œuvre, isolation, bois, enduits — tout pour votre chantier, disponible au dépôt de Lagny-sur-Marne.",
-    cta: { label: "Voir nos produits", href: "/produits" },
-    ctaSecondary: { label: "Demander un devis", href: "/devis" },
+    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    ctaSecondary: { label: "Voir nos produits", href: "/produits" },
   },
   {
     image: "/images/livraison-paris.jpg",
@@ -22,8 +23,8 @@ const SLIDES = [
     eyebrow: "Livraison partout en Île-de-France",
     headline: "Conseil et proximité",
     sub: "Notre équipe vous accompagne du projet à la livraison. Vente au comptoir, commandes spéciales, livraison sur chantier en Île-de-France.",
-    cta: { label: "Nous contacter", href: "/contact" },
-    ctaSecondary: { label: "Horaires & accès", href: "/contact" },
+    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    ctaSecondary: { label: "Nos services", href: "/services" },
   },
   {
     image: "/images/hero-isolation.jpg",
@@ -31,8 +32,8 @@ const SLIDES = [
     eyebrow: "Fournisseurs reconnus",
     headline: "Marques professionnelles",
     sub: "URSA, PRB, SEMIN, WÜRTH, illbruck, ACTIS, Wienerberger et bien d'autres. Des produits éprouvés, disponibles à Lagny.",
-    cta: { label: "Nos fournisseurs", href: "/fournisseurs" },
-    ctaSecondary: { label: "Tous nos produits", href: "/produits" },
+    cta: { label: "Demande de devis gratuit", href: "/devis" },
+    ctaSecondary: { label: "Nos fournisseurs", href: "/fournisseurs" },
   },
 ];
 
@@ -51,14 +52,14 @@ export default function HeroCarousel() {
   }, [emblaApi]);
 
   return (
-    <section className="relative overflow-hidden" style={{ minHeight: "90vh" }}>
-      <div ref={emblaRef} className="overflow-hidden h-full" style={{ minHeight: "90vh" }}>
-        <div className="flex" style={{ minHeight: "90vh" }}>
+    <section className="relative overflow-hidden" style={{ minHeight: "min(78vh, 760px)" }}>
+      <div ref={emblaRef} className="overflow-hidden h-full" style={{ minHeight: "min(78vh, 760px)" }}>
+        <div className="flex" style={{ minHeight: "min(78vh, 760px)" }}>
           {SLIDES.map((slide, i) => (
             <div
               key={i}
               className="relative flex-none w-full"
-              style={{ minHeight: "90vh" }}
+              style={{ minHeight: "min(78vh, 760px)" }}
             >
               {/* Background photo */}
               <Image
@@ -77,9 +78,9 @@ export default function HeroCarousel() {
               <div className="absolute top-0 left-0 w-1.5 h-full bg-orange opacity-80" />
 
               {/* Content */}
-              <div className="relative z-10 container mx-auto h-full flex items-center" style={{ minHeight: "90vh" }}>
+              <div className="relative z-10 container mx-auto h-full flex items-center" style={{ minHeight: "min(78vh, 760px)" }}>
                 <div className="max-w-2xl py-24">
-                  <p className="font-heading text-orange text-sm uppercase tracking-[0.2em] mb-3">
+                  <p className="font-heading text-orange-300 text-sm uppercase tracking-[0.2em] mb-3">
                     {slide.eyebrow}
                   </p>
                   <h1 className="font-heading font-bold text-white text-4xl sm:text-5xl lg:text-6xl uppercase leading-tight mb-6 text-balance">
@@ -110,12 +111,12 @@ export default function HeroCarousel() {
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+      <div className="absolute bottom-20 lg:bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            aria-label={`Slide ${i + 1}`}
+            aria-label={`Diapositive ${i + 1}`}
             className={`transition-all rounded-full ${
               i === activeIndex ? "w-8 h-2 bg-orange" : "w-2 h-2 bg-white/40 hover:bg-white/70"
             }`}
@@ -124,12 +125,10 @@ export default function HeroCarousel() {
       </div>
 
       {/* Phone hint */}
-      <div className="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2 text-white/50 z-20">
-        <span className="font-heading text-xs uppercase tracking-widest rotate-90 origin-center mb-4">{SITE_PHONE}</span>
+      <div className="absolute bottom-24 right-8 hidden lg:flex flex-col items-center gap-2 text-white/50 z-20">
+        <span className="font-heading text-xs uppercase tracking-widest rotate-90 origin-center mb-4">{SITE.phone}</span>
         <div className="w-px h-16 bg-gradient-to-b from-white/50 to-transparent" />
       </div>
     </section>
   );
 }
-
-const SITE_PHONE = "01.85.42.12.34";
