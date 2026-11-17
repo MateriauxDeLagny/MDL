@@ -1,0 +1,11 @@
+# Configuration Netlify (prioritaire sur les réglages de l'interface).
+# Netlify détecte Next.js et applique automatiquement son adaptateur
+# (pages, routes API /api/contact et /api/devis, optimisation d'images).
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Version LTS de Node.js, compatible Next.js 15
+  NODE_VERSION = "22"
