@@ -40,18 +40,18 @@ export default async function FamilyPage({ params }: Props) {
       <section className="relative bg-dark text-white overflow-hidden">
         <Image src={family.image} alt="" fill priority className="object-cover opacity-30" sizes="100vw" />
         <div className="absolute inset-x-0 bottom-0 h-1.5" style={{ backgroundColor: family.color }} />
-        <div className="relative container mx-auto py-14 lg:py-20">
-          <nav className="text-xs text-gray-400 mb-4 font-heading uppercase tracking-wider flex items-center gap-2 flex-wrap" aria-label="Fil d'Ariane">
+        <div className="relative container mx-auto py-6 lg:py-8">
+          <nav className="text-xs text-gray-400 mb-2 font-heading uppercase tracking-wider flex items-center gap-2 flex-wrap" aria-label="Fil d'Ariane">
             <Link href="/" className="hover:text-orange-300 transition-colors">Accueil</Link>
             <span>/</span>
             <Link href="/produits" className="hover:text-orange-300 transition-colors">Produits</Link>
             <span>/</span>
             <span className="text-gray-300">{family.name}</span>
           </nav>
-          <h1 className="heading-xl text-white">{family.name}</h1>
-          <p className="text-gray-200 mt-4 max-w-2xl leading-relaxed">{family.description}</p>
+          <h1 className="font-heading text-3xl lg:text-4xl font-semibold uppercase tracking-wide text-white">{family.name}</h1>
+          <p className="text-gray-200 mt-2 max-w-3xl text-sm leading-relaxed">{family.description}</p>
           {brands.length > 0 && (
-            <p className="mt-6 text-sm text-gray-300">
+            <p className="mt-3 text-sm text-gray-300">
               <span className="font-heading uppercase tracking-wider text-orange-300 mr-2">Marques</span>
               {brands.map((b, i) => (
                 <span key={b.slug}>

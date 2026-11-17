@@ -147,9 +147,9 @@ export default function CatalogExplorer({ family }: Props) {
         </div>
       </div>
 
-      <section className="py-10 lg:py-14 bg-warm-white min-h-[50vh]">
+      <section className="py-5 lg:py-6 bg-warm-white min-h-[50vh]">
         <div className="container mx-auto">
-          <p className="text-sm text-gray-500 mb-6" aria-live="polite">
+          <p className="text-sm text-gray-500 mb-4" aria-live="polite">
             {results.length} catégorie{results.length > 1 ? "s" : ""}
             {query && <> pour « {query} »</>}
           </p>

@@ -18,27 +18,28 @@ export default function ProduitsPage() {
     <>
       <section className="relative bg-dark text-white overflow-hidden">
         <Image src="/images/placo-stock.jpg" alt="" fill priority className="object-cover opacity-25" sizes="100vw" />
-        <div className="relative container mx-auto py-14 lg:py-20">
-          <nav className="text-xs text-gray-400 mb-4 font-heading uppercase tracking-wider flex items-center gap-2" aria-label="Fil d'Ariane">
+        <div className="relative container mx-auto py-6 lg:py-8 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+          <div>
+          <nav className="text-xs text-gray-400 mb-2 font-heading uppercase tracking-wider flex items-center gap-2" aria-label="Fil d'Ariane">
             <Link href="/" className="hover:text-orange-300 transition-colors">Accueil</Link>
             <span>/</span>
             <span className="text-gray-300">Produits</span>
           </nav>
-          <h1 className="heading-xl text-white">Nos produits</h1>
-          <p className="text-gray-300 mt-4 max-w-2xl leading-relaxed">
-            Du gros œuvre aux finitions, tout pour vos chantiers de construction et de rénovation. Recherchez un produit ou
-            parcourez nos familles, puis demandez un prix en un clic.
+          <h1 className="font-heading text-3xl lg:text-4xl font-semibold uppercase tracking-wide text-white">Nos produits</h1>
+          <p className="text-gray-300 mt-2 max-w-2xl text-sm leading-relaxed">
+            Du gros œuvre aux finitions : recherchez un produit, ouvrez sa fiche et demandez un prix en un clic.
           </p>
-          <dl className="mt-8 grid grid-cols-3 max-w-md divide-x divide-white/20 border border-white/20 rounded">
+          </div>
+          <dl className="grid grid-cols-3 w-full max-w-xs flex-shrink-0 divide-x divide-white/20 border border-white/20 rounded">
             {[
               { v: PRODUCT_FAMILIES.length, l: "familles" },
               { v: CATALOG.length, l: "catégories" },
               { v: FOURNISSEURS.length - 1, l: "marques" },
             ].map((s) => (
-              <div key={s.l} className="p-3 text-center">
+              <div key={s.l} className="px-3 py-2 text-center">
                 <dt className="sr-only">{s.l}</dt>
-                <dd className="font-heading text-3xl text-orange-300">{s.v}</dd>
-                <dd className="text-xs text-gray-300 uppercase tracking-wider">{s.l}</dd>
+                <dd className="font-heading text-2xl leading-none text-orange-300">{s.v}</dd>
+                <dd className="text-[10px] text-gray-300 uppercase tracking-wider mt-1">{s.l}</dd>
               </div>
             ))}
           </dl>
