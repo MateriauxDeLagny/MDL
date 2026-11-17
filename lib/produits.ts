@@ -4,6 +4,8 @@
 // `brands` : slugs de lib/fournisseurs.ts disponibles pour cette catégorie.
 // `keywords` : termes de recherche supplémentaires (synonymes, références).
 
+import { ILLUSTRATIONS, type PhotoCredit } from "@/lib/illustrations";
+
 export type SubCategory = {
   slug: string;
   name: string;
@@ -14,6 +16,8 @@ export type SubCategory = {
   packshot?: boolean;
   brands?: string[];
   keywords?: string[];
+  /** Renseigné automatiquement : crédit de la photo d'illustration (banque d'images libre). */
+  illustration?: PhotoCredit;
 };
 
 export type ProductFamily = {
@@ -366,9 +370,15 @@ export function getFamilyBySlug(slug: string): ProductFamily | undefined {
 
 export type CatalogItem = SubCategory & { family: ProductFamily };
 
-/** Toutes les catégories à plat, chacune avec sa famille. */
+/** Toutes les catégories à plat, chacune avec sa famille.
+ *  Sans photo réelle, on utilise la photo d'illustration créditée si elle existe. */
 export const CATALOG: CatalogItem[] = PRODUCT_FAMILIES.flatMap((family) =>
-  family.subcategories.map((s) => ({ ...s, family }))
+  family.subcategories.map((s) => {
+    const ill = s.image ? undefined : ILLUSTRATIONS[s.slug];
+    return ill
+      ? { ...s, family, image: `/images/illustrations/${s.slug}.jpg`, imageAlt: ill.alt, illustration: ill }
+      : { ...s, family };
+  })
 );
 
 export const getCatalogItem = (slug: string) => CATALOG.find((i) => i.slug === slug);

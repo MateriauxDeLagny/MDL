@@ -244,6 +244,18 @@ export default function CatalogExplorer({ family }: Props) {
             <div className="grid md:grid-cols-2 overflow-y-auto">
               <div className="group relative aspect-[4/3] md:aspect-auto md:min-h-[420px] bg-warm-100">
                 <Visual item={item} sizes="(max-width: 768px) 100vw, 440px" />
+                {item.illustration && (
+                  <p className="absolute bottom-0 inset-x-0 px-3 py-1.5 bg-black/60 text-[11px] leading-snug text-white/90">
+                    Photo d&apos;illustration :{" "}
+                    <a href={item.illustration.source} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                      {item.illustration.author}
+                    </a>
+                    ,{" "}
+                    <a href={item.illustration.licenseUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-white">
+                      {item.illustration.license}
+                    </a>
+                  </p>
+                )}
               </div>
 
               <div className="p-6 lg:p-8 flex flex-col">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
+import { ILLUSTRATIONS } from "@/lib/illustrations";
+import { getCatalogItem } from "@/lib/produits";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
@@ -53,6 +55,21 @@ export default function MentionsLegalesPage() {
             <p className="text-gray-600 text-sm mb-6">
               Ce site n'utilise pas de cookies de traçage ou de publicité. Des cookies techniques peuvent être déposés pour assurer le bon fonctionnement du site. La carte de la page Contact, fournie par Google Maps, n'est chargée que si vous cliquez sur « Afficher la carte » ; Google peut alors déposer ses propres cookies.
             </p>
+
+            <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Crédits photos</h2>
+            <p className="text-gray-600 text-sm mb-3">
+              Les photos du dépôt et des produits en stock sont la propriété de Matériaux de Lagny. Certaines catégories du
+              catalogue sont illustrées par des photos sous licence Creative Commons, redimensionnées et recadrées :
+            </p>
+            <ul className="text-gray-600 text-sm mb-6 space-y-1 list-disc pl-5">
+              {Object.entries(ILLUSTRATIONS).map(([slug, c]) => (
+                <li key={slug}>
+                  <span className="text-dark">{getCatalogItem(slug)?.name ?? slug}</span> : «&nbsp;{c.title}&nbsp;» par{" "}
+                  <a href={c.source} target="_blank" rel="noopener noreferrer" className="text-orange hover:underline">{c.author}</a>,{" "}
+                  <a href={c.licenseUrl} target="_blank" rel="noopener noreferrer" className="text-orange hover:underline">{c.license}</a>
+                </li>
+              ))}
+            </ul>
 
             <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Responsabilité</h2>
             <p className="text-gray-600 text-sm">
