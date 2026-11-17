@@ -5,6 +5,8 @@ export const SITE = {
   phone: "01.85.42.12.34",
   phoneHref: "tel:+33185421234",
   email: "contact@materiauxdelagny.com",
+  /** Adresse qui reçoit les demandes de devis et de contact du site. */
+  leadsEmail: "nicolas@materiauxdelagny.com",
   facebook: "https://facebook.com/materiauxdelagny",
   url: "https://www.materiauxdelagny.com",
   // Position (OpenStreetMap / Nominatim : rue Freycinet, ZAE Marne et Gondoire).

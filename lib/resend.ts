@@ -46,7 +46,7 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
       },
       body: JSON.stringify({
         from: `${SITE.name} <noreply@materiauxdelagny.com>`,
-        to: [SITE.email],
+        to: [SITE.leadsEmail],
         reply_to: payload.replyTo,
         subject: payload.subject,
         html: payload.html,
