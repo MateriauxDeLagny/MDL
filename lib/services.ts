@@ -26,7 +26,7 @@ export const SERVICES: Service[] = [
     points: ["Demande en ligne, par téléphone ou au comptoir", "Estimation personnalisée", "Sans engagement"],
     image: "/images/go-parpaings.jpg",
     imageAlt: "Palettes de parpaings en stock au dépôt",
-    cta: { label: "Demander mon devis", href: "#devis" },
+    cta: { label: "Demander mon devis", href: "#formulaire" },
   },
   {
     id: "conseil",
@@ -86,6 +86,6 @@ export const SERVICES: Service[] = [
     points: ["Seine-et-Marne (77) et Île-de-France", "Livraison sur chantier", "Organisation selon votre planning"],
     image: "/images/livraison-parpaings.jpg",
     imageAlt: "Déchargement de parpaings sur un chantier",
-    cta: { label: "Organiser une livraison", href: "#devis" },
+    cta: { label: "Organiser une livraison", href: "#formulaire" },
   },
 ];

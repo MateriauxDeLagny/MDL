@@ -108,7 +108,7 @@ export default function ServicesPage() {
               particulier.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#devis" className="btn-primary">Demande de devis gratuit</a>
+              <a href="#formulaire" className="btn-primary">Demande de devis gratuit</a>
               <a
                 href={SITE.phoneHref}
                 className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-white/60 text-white font-heading text-sm uppercase tracking-wider rounded hover:bg-white/10 transition-colors"
@@ -284,7 +284,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Formulaire de devis */}
-      <section id="devis" className="scroll-mt-32 py-14 lg:py-20 bg-white">
+      <section id="formulaire" className="scroll-mt-32 py-14 lg:py-20 bg-white">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <p className="eyebrow">Gratuit et sans engagement</p>
