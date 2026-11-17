@@ -7,10 +7,8 @@ export const SITE = {
   email: "contact@materiauxdelagny.com",
   facebook: "https://facebook.com/materiauxdelagny",
   url: "https://www.materiauxdelagny.com",
-  // Carte intégrée sans clé API, centrée sur l'adresse du dépôt.
-  mapsEmbed:
-    "https://maps.google.com/maps?output=embed&z=16&q=" +
-    encodeURIComponent("17 rue Freycinet, 77400 Lagny-sur-Marne"),
+  // Position (OpenStreetMap / Nominatim : rue Freycinet, ZAE Marne et Gondoire).
+  geo: { lat: 48.87637, lon: 2.67997 },
   hours: [
     { days: "Lundi – Vendredi", time: "7h30 – 17h30" },
     { days: "Samedi", time: "8h00 – 12h00" },

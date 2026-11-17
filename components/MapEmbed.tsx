@@ -1,46 +1,39 @@
-"use client";
-
-import { useState } from "react";
 import { SITE } from "@/lib/constants";
-import { PinIcon } from "@/components/Icons";
+import { ArrowIcon, PinIcon } from "@/components/Icons";
 
-// La carte Google n'est chargée qu'à la demande du visiteur : aucun cookie Google
-// n'est déposé sans action de sa part (RGPD), et la page reste légère.
+// Carte OpenStreetMap affichée d'office : pas de cookie de traçage, donc pas de
+// consentement préalable nécessaire (contrairement à Google Maps).
+const { lat, lon } = SITE.geo;
+const d = { lat: 0.004, lon: 0.009 };
+const bbox = [lon - d.lon, lat - d.lat, lon + d.lon, lat + d.lat].join(",");
+const EMBED = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+const FULL = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
+
 export default function MapEmbed() {
-  const [show, setShow] = useState(false);
-
-  if (show) {
-    return (
+  return (
+    <div className="relative h-full w-full">
       <iframe
-        title={`Localisation ${SITE.name}`}
-        src={SITE.mapsEmbed}
-        width="100%"
-        height="100%"
-        style={{ border: 0 }}
-        allowFullScreen
+        title={`Plan d'accès — ${SITE.name}`}
+        src={EMBED}
+        className="absolute inset-0 h-full w-full border-0"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       />
-    );
-  }
-
-  return (
-    <div className="h-full w-full flex flex-col items-center justify-center gap-4 text-center px-4 bg-[repeating-linear-gradient(45deg,#EAE7E1_0_12px,#F4F2EE_12px_24px)]">
-      <span className="w-14 h-14 rounded-full bg-orange text-white flex items-center justify-center shadow-lg">
-        <PinIcon className="w-7 h-7" />
-      </span>
-      <p className="font-heading text-dark text-lg uppercase tracking-wide">{SITE.address}</p>
-      <div className="flex flex-wrap justify-center gap-3">
-        <button type="button" onClick={() => setShow(true)} className="btn-primary">
-          Afficher la carte
-        </button>
-        <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="btn-outline bg-white">
-          Itinéraire Google Maps
-        </a>
+      <div className="absolute left-4 bottom-4 sm:left-6 sm:bottom-6 max-w-[calc(100%-2rem)] bg-white rounded shadow-xl border border-warm-border p-4 sm:p-5">
+        <p className="flex items-start gap-2 font-heading text-dark uppercase tracking-wide">
+          <PinIcon className="w-5 h-5 text-orange flex-shrink-0" />
+          {SITE.name}
+        </p>
+        <p className="text-sm text-gray-600 mt-1 ml-7">{SITE.address}</p>
+        <div className="mt-3 ml-7 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="btn-primary !py-2 !px-4 !text-xs">
+            Itinéraire <ArrowIcon className="w-3.5 h-3.5" />
+          </a>
+          <a href={FULL} target="_blank" rel="noopener noreferrer" className="text-xs text-gray-500 hover:text-orange underline">
+            Agrandir la carte
+          </a>
+        </div>
       </div>
-      <p className="text-xs text-gray-500 max-w-md">
-        L&apos;affichage de la carte charge un service Google susceptible de déposer des cookies.
-      </p>
     </div>
   );
 }
