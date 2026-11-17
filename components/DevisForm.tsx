@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { PRODUCT_FAMILIES } from "@/lib/produits";
 import { SITE } from "@/lib/constants";
 
 const PRODUCT_OPTIONS = [
@@ -27,6 +28,21 @@ export default function DevisForm() {
     details: "",
     website: "",
   });
+
+  // Préremplissage depuis le catalogue : /devis?famille=gros-oeuvre&produit=Ciment
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const idx = PRODUCT_FAMILIES.findIndex((f) => f.slug === p.get("famille"));
+    const produit = p.get("produit")?.slice(0, 120);
+    if (idx < 0 && !produit) return;
+    setForm((prev) => ({
+      ...prev,
+      category: idx >= 0 ? PRODUCT_OPTIONS[idx] : prev.category,
+      details: produit && !prev.details ? `Produit : ${produit}
+Quantité : 
+` : prev.details,
+    }));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
