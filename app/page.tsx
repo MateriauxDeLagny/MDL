@@ -8,6 +8,8 @@ import { ArrowIcon, CheckIcon, PhoneIcon } from "@/components/Icons";
 import { PRODUCT_FAMILIES } from "@/lib/produits";
 import { SERVICES } from "@/lib/services";
 import { SITE } from "@/lib/constants";
+import { FOURNISSEURS } from "@/lib/fournisseurs";
+import LogoMarquee from "@/components/LogoMarquee";
 
 export const metadata: Metadata = {
   title: { absolute: "Matériaux de Lagny — Négoce de matériaux à Lagny-sur-Marne" },
@@ -16,8 +18,6 @@ export const metadata: Metadata = {
 };
 
 const HIGHLIGHTS = ["devis", "livraison", "stock", "conseil"] as const;
-
-const SUPPLIERS_PREVIEW = ["Wienerberger", "PRB", "SEMIN", "URSA", "WÜRTH", "illbruck", "ACTIS", "Heidelberg Materials"];
 
 export default function HomePage() {
   const schemaOrg = {
@@ -216,27 +216,17 @@ export default function HomePage() {
       </section>
 
       {/* Fournisseurs */}
-      <section className="py-12 bg-white border-b border-warm-border">
-        <div className="container mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-            <p className="font-heading text-sm uppercase tracking-[0.15em] text-gray-500 lg:w-48 flex-shrink-0">
-              Des marques reconnues
-            </p>
-            <div className="flex flex-wrap gap-3 flex-1">
-              {SUPPLIERS_PREVIEW.map((s) => (
-                <span
-                  key={s}
-                  className="px-4 py-2.5 bg-warm-white border border-warm-border rounded font-heading text-sm text-gray-600 uppercase tracking-wider"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-            <Link href="/fournisseurs" className="inline-flex items-center gap-1.5 text-sm font-medium text-orange hover:underline flex-shrink-0">
-              Tous nos fournisseurs <ArrowIcon className="w-4 h-4" />
-            </Link>
+      <section className="py-12 lg:py-14 bg-white border-b border-warm-border">
+        <div className="container mx-auto mb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+          <div>
+            <p className="eyebrow">Nos fournisseurs</p>
+            <h2 className="heading-md text-dark">Des marques reconnues par les professionnels</h2>
           </div>
+          <Link href="/fournisseurs" className="inline-flex items-center gap-1.5 text-sm font-medium text-orange hover:underline flex-shrink-0">
+            Toutes les fiches fournisseurs <ArrowIcon className="w-4 h-4" />
+          </Link>
         </div>
+        <LogoMarquee items={FOURNISSEURS.filter((f) => f.slug !== "starmat")} duration={50} />
       </section>
 
       <InfosPratiques />

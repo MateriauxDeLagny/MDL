@@ -71,3 +71,39 @@
     @apply font-heading text-white text-sm uppercase tracking-[0.15em] mb-4;
   }
 }
+
+/* Bandeaux de logos défilants */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; }
+  .marquee-track > [aria-hidden="true"] { display: none; }
+}
+
+/* Fiche fournisseur (dialog natif) */
+dialog.fiche::backdrop {
+  background: rgb(27 42 107 / 0.6);
+  backdrop-filter: blur(2px);
+}
