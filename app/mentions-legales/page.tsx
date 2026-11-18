@@ -36,9 +36,9 @@ export default function MentionsLegalesPage() {
 
             <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Hébergeur</h2>
             <p className="text-gray-600 text-sm mb-6">
-              Ce site est hébergé par <strong className="text-dark">Vercel Inc.</strong><br />
-              440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
-              <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-orange hover:underline">vercel.com</a>
+              Ce site est hébergé par <strong className="text-dark">Netlify, Inc.</strong><br />
+              512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis<br />
+              <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" className="text-orange hover:underline">netlify.com</a>
             </p>
 
             <h2 className="font-heading text-dark text-lg uppercase font-semibold mb-3">Propriété intellectuelle</h2>

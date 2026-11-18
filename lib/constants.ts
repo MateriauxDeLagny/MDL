@@ -8,7 +8,8 @@ export const SITE = {
   /** Adresse qui reçoit les demandes de devis et de contact du site. */
   leadsEmail: "nicolas@materiauxdelagny.com",
   facebook: "https://facebook.com/materiauxdelagny",
-  url: "https://www.materiauxdelagny.com",
+  /** Adresse publique du site (les emails restent sur le domaine .com). */
+  url: "https://www.materiauxdelagny.fr",
   // Position (OpenStreetMap / Nominatim : rue Freycinet, ZAE Marne et Gondoire).
   geo: { lat: 48.87637, lon: 2.67997 },
   hours: [
