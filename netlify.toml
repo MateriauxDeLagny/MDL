@@ -9,3 +9,8 @@
 [build.environment]
   # Version LTS de Node.js, compatible Next.js 15
   NODE_VERSION = "22"
+
+# Adaptateur officiel Next.js de Netlify, déclaré explicitement : sans lui,
+# Netlify publie le dossier .next brut et toutes les pages renvoient 404.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
