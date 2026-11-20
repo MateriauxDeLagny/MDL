@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { escapeHtml as e, field, isEmail, sendEmail } from "@/lib/resend";
+import { escapeHtml as e, field, isEmail, sendEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
   try {

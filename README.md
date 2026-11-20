@@ -6,13 +6,13 @@ Site vitrine statique pour Matériaux de Lagny, négoce de matériaux à Lagny-s
 
 | Couche | Choix | Raison |
 |---|---|---|
-| Framework | Next.js 14 App Router | SSG natif, SEO, Vercel Hobby = gratuit |
+| Framework | Next.js 14 App Router | SSG natif, SEO |
 | Style | Tailwind CSS | Productivité, zero runtime CSS |
 | Polices | Oswald + Inter via next/font | Auto-hébergé, pas de CDN externe |
 | Carousel | embla-carousel-react | Léger, accessible, sans jQuery |
-| Email | Resend (free tier) | 3000 emails/mois gratuits |
+| Email | SMTP OVH (nodemailer) | Boîtes mail déjà incluses chez OVH |
 | Données produits | TypeScript statique | Pas de CMS, 0 latence, facilement éditable |
-| Hébergement | Vercel Hobby | Gratuit, déploiement GitHub automatique |
+| Hébergement | Netlify | Gratuit, déploiement GitHub automatique |
 
 **Coût mensuel : 0 €**
 
@@ -32,8 +32,8 @@ app/
   contact/page.tsx
   mentions-legales/page.tsx
   api/
-    contact/route.ts  — Envoi email contact via Resend
-    devis/route.ts    — Envoi email devis via Resend
+    contact/route.ts  — Envoi email contact (SMTP OVH)
+    devis/route.ts    — Envoi email devis (SMTP OVH)
   sitemap.ts          — Sitemap auto-généré
   robots.ts           — robots.txt
 
@@ -48,7 +48,7 @@ components/
 lib/
   constants.ts        — Infos entreprise (adresse, téléphone, horaires…)
   produits.ts         — Données statiques des 6 familles de produits
-  resend.ts           — Helper email (mock si pas de clé API)
+  email.ts            — Envoi des formulaires par SMTP OVH (mock si non configuré)
 ```
 
 ---
@@ -64,51 +64,40 @@ npm run dev
 Pour activer l'envoi réel d'emails, créer `.env.local` :
 
 ```
-RESEND_API_KEY=re_xxxxxxxxxxxx
+SMTP_USER=noreply@materiauxdelagny.com
+SMTP_PASSWORD=mot-de-passe-de-la-boite
 ```
 
-Sans cette variable, les emails sont loggés dans la console (mode mock — aucune erreur).
+Sans ces variables, les emails sont affichés dans la console (mode mock).
 
 ---
 
-## Déploiement Vercel
+## Hébergement Netlify
 
-### Première fois
+Configuration dans `netlify.toml` (build Next.js, redirection du .com vers le .fr).
+Chaque push sur `main` est déployé en production.
 
-```bash
-git init
-git add .
-git commit -m "init: site vitrine matériaux de lagny"
-# Pousser sur GitHub puis connecter le dépôt dans vercel.com
-```
+### Domaines
 
-### Variables d'environnement Vercel
+- Site : `www.materiauxdelagny.fr` (+ `materiauxdelagny.fr`)
+- `materiauxdelagny.com` et `www.materiauxdelagny.com` : alias Netlify, redirigés en 301 vers le .fr
+- DNS : `A @ → 75.2.60.5`, `CNAME www → <site>.netlify.app`
+- Ne jamais toucher aux MX / SPF du .com : ce sont les boîtes mail OVH
 
-Dans le dashboard Vercel → Settings → Environment Variables :
+### Envoi des formulaires (devis, contact)
+
+Les demandes partent par le serveur SMTP d'OVH (`ssl0.ovh.net`, port 465) depuis une
+boîte `@materiauxdelagny.com`, et arrivent sur `SITE.leadsEmail` (`lib/constants.ts`).
+Le bouton « Répondre » répond directement au client.
+
+Dans Netlify → Site configuration → Environment variables :
 
 | Variable | Valeur |
 |---|---|
-| `RESEND_API_KEY` | Votre clé Resend (optionnel) |
+| `SMTP_USER` | Adresse complète de la boîte d'envoi |
+| `SMTP_PASSWORD` | Mot de passe de cette boîte |
 
-### Domaine personnalisé
-
-1. Dans Vercel → Settings → Domains → ajouter `materiauxdelagny.com` et `www.materiauxdelagny.com`
-2. Chez votre registrar DNS (OVH, Gandi…) :
-   - `A` record : `@` → `76.76.21.21`
-   - `CNAME` record : `www` → `cname.vercel-dns.com`
-3. Vercel délivre le certificat SSL automatiquement (Let's Encrypt)
-
----
-
-## Activer les emails Resend
-
-1. Créer un compte sur [resend.com](https://resend.com)
-2. Ajouter le domaine `materiauxdelagny.com` → suivre les instructions DNS
-3. Générer une API key
-4. Ajouter `RESEND_API_KEY` dans Vercel (Settings → Environment Variables)
-5. Redéployer (push sur main)
-
-Les emails partent depuis `noreply@materiauxdelagny.com` et arrivent sur `contact@materiauxdelagny.com`.
+Puis redéployer (Deploys → Trigger deploy).
 
 ---
 
@@ -139,11 +128,11 @@ Les slides du carousel sont actuellement des dégradés CSS. Pour ajouter des ph
 
 - [ ] Vérifier les informations dans `lib/constants.ts` (numéro, email, horaires)
 - [ ] Tester les formulaires contact et devis en local
-- [ ] Ajouter `RESEND_API_KEY` dans Vercel (ou noter que les emails seront mockés)
-- [ ] Configurer le domaine DNS dans Vercel
-- [ ] Vérifier `https://www.materiauxdelagny.com` accessible
+- [ ] Ajouter `SMTP_USER` et `SMTP_PASSWORD` dans Netlify
+- [ ] Configurer les DNS du .fr et du .com vers Netlify
+- [ ] Vérifier `https://www.materiauxdelagny.fr` accessible
 - [ ] Tester en mobile (iOS Safari + Android Chrome)
 - [ ] Vérifier les formulaires en production
-- [ ] Tester `https://www.materiauxdelagny.com/sitemap.xml`
+- [ ] Tester `https://www.materiauxdelagny.fr/sitemap.xml`
 - [ ] Soumettre le sitemap dans Google Search Console
 - [ ] Ajouter de vraies photos pour remplacer les placeholders du carousel
