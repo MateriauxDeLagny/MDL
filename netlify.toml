@@ -10,6 +10,21 @@
   # Version LTS de Node.js, compatible Next.js 15
   NODE_VERSION = "22"
 
+# Domaine .com (alias Netlify) : redirection permanente vers le site en .fr.
+# Sans effet tant que les DNS du .com ne pointent pas vers Netlify.
+# Les emails @materiauxdelagny.com ne sont pas concernés (MX chez OVH).
+[[redirects]]
+  from = "https://materiauxdelagny.com/*"
+  to = "https://www.materiauxdelagny.fr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.materiauxdelagny.com/*"
+  to = "https://www.materiauxdelagny.fr/:splat"
+  status = 301
+  force = true
+
 # Adaptateur officiel Next.js de Netlify, déclaré explicitement : sans lui,
 # Netlify publie le dossier .next brut et toutes les pages renvoient 404.
 [[plugins]]
