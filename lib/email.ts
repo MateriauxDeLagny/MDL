@@ -25,11 +25,11 @@ export function field(value: unknown, max = 200): string {
 export const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 /**
- * Envoi via le serveur SMTP d'OVH, avec une boîte mail @materiauxdelagny.com.
+ * Envoi via le serveur SMTP d'OVH Exchange, avec la boîte contact@materiauxdelagny.com.
  * Variables d'environnement (Netlify) :
  *   SMTP_USER     — adresse complète de la boîte d'envoi (contact@materiauxdelagny.com)
  *   SMTP_PASSWORD — mot de passe de cette boîte
- *   SMTP_HOST     — optionnel, ssl0.ovh.net par défaut
+ *   SMTP_HOST     — optionnel, ex2.mail.ovh.net (OVH Exchange) par défaut
  * L'expéditeur est forcément la boîte authentifiée (OVH refuse sinon).
  */
 export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; error?: string }> {
@@ -49,9 +49,10 @@ export async function sendEmail(payload: EmailPayload): Promise<{ ok: boolean; e
 
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "ssl0.ovh.net",
-      port: 465,
-      secure: true,
+      host: process.env.SMTP_HOST || "ex2.mail.ovh.net",
+      port: 587,
+      secure: false,
+      requireTLS: true,
       auth: { user, pass },
     });
 

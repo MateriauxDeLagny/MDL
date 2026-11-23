@@ -86,7 +86,7 @@ Chaque push sur `main` est déployé en production.
 
 ### Envoi des formulaires (devis, contact)
 
-Les demandes partent par le serveur SMTP d'OVH (`ssl0.ovh.net`, port 465) depuis une
+Les demandes partent par le serveur SMTP d'OVH Exchange (`ex2.mail.ovh.net`, port 587) depuis une
 boîte `@materiauxdelagny.com`, et arrivent sur `SITE.leadsEmail` (`lib/constants.ts`).
 Le bouton « Répondre » répond directement au client.
 
