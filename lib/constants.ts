@@ -6,7 +6,7 @@ export const SITE = {
   phoneHref: "tel:+33185421234",
   email: "contact@materiauxdelagny.com",
   /** Adresse qui reçoit les demandes de devis et de contact du site. */
-  leadsEmail: "nicolas@materiauxdelagny.com",
+  leadsEmail: "contact@materiauxdelagny.com",
   facebook: "https://facebook.com/materiauxdelagny",
   /** Adresse publique du site (les emails restent sur le domaine .com). */
   url: "https://www.materiauxdelagny.fr",

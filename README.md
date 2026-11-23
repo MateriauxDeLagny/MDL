@@ -64,7 +64,7 @@ npm run dev
 Pour activer l'envoi réel d'emails, créer `.env.local` :
 
 ```
-SMTP_USER=noreply@materiauxdelagny.com
+SMTP_USER=contact@materiauxdelagny.com
 SMTP_PASSWORD=mot-de-passe-de-la-boite
 ```
 

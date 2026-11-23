@@ -27,7 +27,7 @@ export const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 /**
  * Envoi via le serveur SMTP d'OVH, avec une boîte mail @materiauxdelagny.com.
  * Variables d'environnement (Netlify) :
- *   SMTP_USER     — adresse complète de la boîte d'envoi (ex. noreply@materiauxdelagny.com)
+ *   SMTP_USER     — adresse complète de la boîte d'envoi (contact@materiauxdelagny.com)
  *   SMTP_PASSWORD — mot de passe de cette boîte
  *   SMTP_HOST     — optionnel, ssl0.ovh.net par défaut
  * L'expéditeur est forcément la boîte authentifiée (OVH refuse sinon).
