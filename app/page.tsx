@@ -26,6 +26,8 @@ export default function HomePage() {
     name: SITE.name,
     description: "Négoce de matériaux de construction à Lagny-sur-Marne",
     url: SITE.url,
+    logo: `${SITE.url}/logo.png`,
+    image: `${SITE.url}/logo.png`,
     telephone: SITE.phone,
     email: SITE.email,
     address: {
